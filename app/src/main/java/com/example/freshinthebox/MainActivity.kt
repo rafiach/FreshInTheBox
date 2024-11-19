@@ -66,6 +66,7 @@ fun MainScreen() {
             }
 //            untuk ke detail resep kan butuh parameter resepmasakan nah untuk dinavhost belum bisa, jadi ini pakek dummy nama resep hehe
             composable("detailresep") { DetailResepScreen(namaResep,navController) }
+            composable("cart") { TransactionHistoryScreen() }
 
         }
     }

@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -45,6 +46,7 @@ fun ProductCard(product: Product, onClick: (Int) -> Unit) {
             Image(
                 painter = painterResource(id = product.imageRes),
                 contentDescription = product.name,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(172.dp)
                     .fillMaxWidth()
@@ -57,7 +59,7 @@ fun ProductCard(product: Product, onClick: (Int) -> Unit) {
                     .align(Alignment.Start),
             ) {
                 Text(text = product.name, fontSize = 16.sp, color = Color.White, fontWeight = FontWeight.Bold)
-                Text(text = product.price, fontSize = 16.sp, color = Color.White)
+                Text(text = product.price.toString(), fontSize = 16.sp, color = Color.White)
             }
         }
     }

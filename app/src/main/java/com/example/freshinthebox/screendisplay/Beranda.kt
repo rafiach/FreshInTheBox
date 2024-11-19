@@ -27,7 +27,6 @@
     import androidx.navigation.compose.rememberNavController
     import com.example.freshinthebox.Category
     import com.example.freshinthebox.Product
-    import com.example.freshinthebox.R
     import com.example.freshinthebox.getSampleCategories
     import com.example.freshinthebox.getSampleProducts
 
@@ -42,7 +41,7 @@
                 text = "Hi, Fifrens...",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF2E7D32),
+                color = Color(44, 110, 73),
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
@@ -53,14 +52,14 @@
                 text = "Kategori",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF2E7D32),
+                color = Color(44, 110, 73),
                 modifier = Modifier.padding(16.dp)
             )
             Box(modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
                 .background(
-                    Color(166, 174, 191),
+                    Color(254, 254, 227),
                     RoundedCornerShape(16.dp)
                 )
             ){
@@ -75,7 +74,7 @@
                 text = "Produk",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF2E7D32),
+                color = Color(44, 110, 73),
                 modifier = Modifier.padding(16.dp)
             )
             LazyVerticalGrid(
@@ -97,15 +96,15 @@
             modifier = Modifier
                 .padding(8.dp)
                 .width(100.dp)
-                .height(135.dp),
+                .height(130.dp)
+                .clip(RoundedCornerShape(16.dp)),
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFF2E7D32)
+                containerColor = Color(44, 110, 73)
             )
         ) {
             Column(
-                modifier = Modifier.padding(8.dp).fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = painterResource(id = category.imageRes),
@@ -113,9 +112,15 @@
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(100.dp)
-                        .clip(RoundedCornerShape(8.dp))
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(16.dp))
                 )
-                Text(text = category.name, fontSize = 12.sp, color = Color.White)
+                Text(
+                    text = category.name,
+                    fontSize = 12.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(8.dp)
+                    )
             }
         }
     }
@@ -124,38 +129,36 @@
     fun ProductCard(product: Product, onClick: (Int) -> Unit) {
         Card(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp)
-                .height(210.dp)
+                .width(160.dp)
+                .height(230.dp)
+                .clip(RoundedCornerShape(16.dp))
                 .clickable{onClick(product.id)},
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFF2E7D32)
+                containerColor = Color(44, 110, 73)
             )
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 8.dp, vertical = 12.dp),
+                    .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
             ){
                 Image(
                     painter = painterResource(id = product.imageRes),
                     contentDescription = product.name,
                     modifier = Modifier
-                        .width(150.dp)
-                        .height(150.dp)
-                        .clip(RoundedCornerShape(18.dp))
+                        .size(172.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
                 )
-                Row(
+                Column (
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
+                        .padding(8.dp)
+                        .align(Alignment.Start),
                 ) {
-                    Text(text = product.name, fontSize = 18.sp, color = Color.White, fontWeight = FontWeight.Bold)
-                    Text(text = product.price, fontSize = 18.sp, color = Color.White)
+                    Text(text = product.name, fontSize = 16.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                    Text(text = product.price, fontSize = 16.sp, color = Color.White)
                 }
             }
         }
@@ -169,7 +172,7 @@
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .background(color = Color(5,101,38), RoundedCornerShape(50)),
+                .background(color = Color(44, 110, 73), RoundedCornerShape(50)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(

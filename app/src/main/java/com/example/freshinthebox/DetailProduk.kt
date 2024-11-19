@@ -11,6 +11,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.freshinthebox.component.TopBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,38 +34,7 @@ fun ProductDetailScreen(navkontrol: NavController, productId: Int) {
 
     if (product != null){
         Column(modifier = Modifier.fillMaxSize()) {
-            Row (
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp)
-            ){
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(color = Color(5,101,38))
-                        .clickable { navkontrol.popBackStack() }
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                        contentDescription = "Kembali",
-                        tint = Color.White,
-                        modifier = Modifier.size(48.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    text = "Detail Produk",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    color = Color(5,101,38),
-
-                    )
-                Spacer(modifier = Modifier.weight(1f))
-            }
+            TopBar(navkontrol, "Detail Produk")
             Image(
                 painter = painterResource(id = product.imageRes),
                 contentDescription = "Gambar Produk",

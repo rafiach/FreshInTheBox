@@ -18,54 +18,43 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import com.example.freshinthebox.Category
 import com.example.freshinthebox.R
 
 @Composable
-fun Categorycard(
-    title: String,
-    image: Painter,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    navController: NavController
-) {
+fun CategoryCard(category: Category) {
     Card(
-        modifier = modifier
+        modifier = Modifier
             .padding(8.dp)
-            .width(80.dp)
-            .height(100.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .clickable { onClick() },
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F5F5)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            .width(100.dp)
+            .height(130.dp)
+            .clip(RoundedCornerShape(16.dp)),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(44, 110, 73)
+        )
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = image,
-                contentDescription = null,
+                painter = painterResource(id = category.imageRes),
+                contentDescription = category.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .width(60.dp)
-                    .height(60.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .size(100.dp)
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(16.dp))
             )
-            Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = title,
-                style = MaterialTheme.typography.headlineSmall.copy(
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold
-                ),
-                modifier = Modifier
-                    .padding(horizontal = 8.dp, vertical = 0.dp)
+                text = category.name,
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(8.dp)
             )
         }
     }
 }
-
 
 //@Preview(showBackground = true)
 //@Composable

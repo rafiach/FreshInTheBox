@@ -27,6 +27,8 @@
     import androidx.navigation.compose.rememberNavController
     import com.example.freshinthebox.Category
     import com.example.freshinthebox.Product
+    import com.example.freshinthebox.component.CategoryCard
+    import com.example.freshinthebox.component.ProductCard
     import com.example.freshinthebox.getSampleCategories
     import com.example.freshinthebox.getSampleProducts
 
@@ -85,80 +87,6 @@
                     ProductCard(product = products[index], onClick = {
                         navkontrol.navigate("detailproduk/${products[index].id}")
                     })
-                }
-            }
-        }
-    }
-
-    @Composable
-    fun CategoryCard(category: Category) {
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .width(100.dp)
-                .height(130.dp)
-                .clip(RoundedCornerShape(16.dp)),
-            colors = CardDefaults.cardColors(
-                containerColor = Color(44, 110, 73)
-            )
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Image(
-                    painter = painterResource(id = category.imageRes),
-                    contentDescription = category.name,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .fillMaxSize()
-                        .clip(RoundedCornerShape(16.dp))
-                )
-                Text(
-                    text = category.name,
-                    fontSize = 12.sp,
-                    color = Color.White,
-                    modifier = Modifier.padding(8.dp)
-                    )
-            }
-        }
-    }
-
-    @Composable
-    fun ProductCard(product: Product, onClick: (Int) -> Unit) {
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .width(160.dp)
-                .height(230.dp)
-                .clip(RoundedCornerShape(16.dp))
-                .clickable{onClick(product.id)},
-            colors = CardDefaults.cardColors(
-                containerColor = Color(44, 110, 73)
-            )
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ){
-                Image(
-                    painter = painterResource(id = product.imageRes),
-                    contentDescription = product.name,
-                    modifier = Modifier
-                        .size(172.dp)
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                )
-                Column (
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                        .align(Alignment.Start),
-                ) {
-                    Text(text = product.name, fontSize = 16.sp, color = Color.White, fontWeight = FontWeight.Bold)
-                    Text(text = product.price, fontSize = 16.sp, color = Color.White)
                 }
             }
         }
